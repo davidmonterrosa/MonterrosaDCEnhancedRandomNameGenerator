@@ -12,6 +12,8 @@ const setPeoplePerGroupBtn = document.getElementById("setPeoplePerGroupBtn");
 const makeNumberGroups = document.getElementById("makeNumberGroups");
 const makeNumberGroupsBtn = document.getElementById("makeNumberGroupsBtn");
 const total = document.getElementById("total");
+const groupsByPplArea = document.getElementById("groupsByPplArea");
+const groupsByGroupsArea = document.getElementById("groupsByGroupsArea");
 
 
 
@@ -108,7 +110,15 @@ function groupByNumberOfPeople(people) {
         console.log(temporaryArray);
         twoDArray.push(temporaryArray);
     }
-
+    let secondCounter = 1;
+    groupsByPplArea.innerHTML = "";
+    twoDArray.map((arrElement) => {
+        let groupNumber = document.createElement("h1");
+        groupNumber.className = "mt-4 mb-5 text-3xl font-normal text-gray-500 dark:text-gray-400";
+        groupNumber.innerText = `Group ${secondCounter}: ${[...arrElement]}`
+        groupsByPplArea.appendChild(groupNumber);
+        secondCounter++;
+    })
 }
 
 function groupByNumberOfGroups(groups) {
@@ -138,6 +148,15 @@ function groupByNumberOfGroups(groups) {
         console.log(temporaryArray);
         twoDArray.push(temporaryArray);
     }
+    let secondCounter = 1;
+    groupsByGroupsArea.innerHTML = "";
+    twoDArray.map((arrElement) => {
+        let groupNumber = document.createElement("h1");
+        groupNumber.className = "mt-4 mb-5 text-3xl font-normal text-gray-500 dark:text-gray-400";
+        groupNumber.innerText = `Group ${secondCounter}: ${[...arrElement]}`
+        groupsByGroupsArea.appendChild(groupNumber);
+        secondCounter++;
+    })
 }
 
 // Event Listeners
