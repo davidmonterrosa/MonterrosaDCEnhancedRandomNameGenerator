@@ -45,6 +45,7 @@ function displayListOfNames() {
         
             personCard.remove();
             console.log(listOfNames);
+            displayListOfNames();
         });
 
         let deleteIcon = document.createElement('img');
@@ -93,11 +94,13 @@ function groupByNumberOfPeople(people) {
     let twoDArray = [];
     let counter = 0;
     for(let i = 0; i < listOfNames.length; i++) {
+        console.log(arrCopy[i]);
         if(counter == people) {
             twoDArray.push(temporaryArray);
             console.log(twoDArray);
             temporaryArray = [];
-            counter = 0;
+            temporaryArray.push(arrCopy[i]);
+            counter = 1;
         } else {
             temporaryArray.push(arrCopy[i]);
             counter++;
@@ -135,7 +138,8 @@ function groupByNumberOfGroups(groups) {
             twoDArray.push(temporaryArray);
             console.log(twoDArray);
             temporaryArray = [];
-            counter = 0;
+            temporaryArray.push(arrCopy[i]);
+            counter = 1;
         } else {
             temporaryArray.push(arrCopy[i]);
             counter++;
@@ -148,6 +152,7 @@ function groupByNumberOfGroups(groups) {
         console.log(temporaryArray);
         twoDArray.push(temporaryArray);
     }
+
     let secondCounter = 1;
     groupsByGroupsArea.innerHTML = "";
     twoDArray.map((arrElement) => {
